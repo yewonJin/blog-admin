@@ -1,0 +1,232 @@
+.markdownBox {
+  max-width: 800px;
+}
+
+.markdownBox > * {
+  padding: 0;
+  margin: 0;
+}
+
+.markdownBox > :is(h1, h2, h3, h4, h5, h6) {
+  font-weight: 600;
+  margin-top: 12px;
+  margin-bottom: 24px;
+  color: var(--primaryAccentText);
+  scroll-margin-top: 50px;
+}
+
+.markdownBox :is(h1, h2, h3, h4) {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.markdownBox :is(h1, h2, h3, h4) > a {
+  color: inherit;
+}
+
+.markdownBox :is(h1, h2, h3, h4) > a:hover {
+  cursor: pointer;
+  color: #2a7ffd;
+  transition-duration: 250ms;
+}
+
+.markdownBox :is(h1, h2, h3, h4) > svg {
+  opacity: 0;
+  margin-top: 3px;
+  font-size: 1.8rem;
+  transform: rotate(-45deg);
+}
+
+.markdownBox > :is(h1, h2) {
+  margin-top: 80px;
+  margin-bottom: 40px;
+}
+
+.markdownBox h1:first-child {
+  margin-top: 0px;
+}
+
+.markdownBox h2:first-child {
+  margin-top: 0px;
+}
+
+.markdownBox h2 {
+  font-size: 28px;
+  line-height: 40px;
+}
+
+.markdownBox > h3 {
+  font-size: 20px;
+  margin-top: 40px;
+  margin-bottom: 20px;
+}
+
+.markdownBox > h4 {
+  font-size: 18px;
+  margin-top: 30px;
+  margin-bottom: 14px;
+}
+
+.markdownBox p {
+  font-size: 18px;
+  line-height: 1.8;
+  margin-bottom: 14px;
+  color: var(--secondaryText);
+}
+
+.markdownBox p > strong {
+  font-weight: 500;
+  color: var(--primaryText);
+}
+
+.markdownBox > hr {
+  margin: 60px 0px;
+  border-color: #fff;
+}
+
+.markdownBox :is(ul, ol) {
+  margin-left: 20px;
+  margin-bottom: 12px;
+}
+
+.markdownBox li {
+  font-size: 18px;
+  line-height: 2;
+  color: var(--secondaryText);
+}
+
+.markdownBox a {
+  color: #2a7ffd;
+  width: auto !important;
+}
+
+.markdownBox blockquote {
+  border-left: 6px solid #ddd;
+  background-color: var(--primaryFill);
+  padding: 15px;
+  padding-left: 15px;
+  margin: 20px 0px;
+}
+
+.markdownBox blockquote > p {
+  margin: 0px;
+}
+
+.markdownBox > p:has(img) {
+  margin-bottom: 8px;
+}
+
+.markdownBox > p > img {
+  margin-top: 10px;
+  max-width: 800px;
+}
+
+.markdownBox .codeStyle > code {
+  font-size: 16px !important;
+}
+
+.markdownBox pre > .codeStyle {
+  display: none;
+}
+
+.markdownBox table {
+  border-spacing: 0px;
+  margin-bottom: 20px;
+}
+
+.markdownBox table th {
+  padding: 12px;
+  border-bottom: 1px solid var(--secondaryFill);
+}
+
+@keyframes fadein {
+  from {
+    fill: white;
+  }
+
+  to {
+    fill: #2a7ffd;
+  }
+}
+
+.markdownBox :is(h1, h2, h3, h4) > div > svg {
+  opacity: 0;
+  margin-bottom: 0px;
+  font-size: 1.8rem;
+  transform: rotate(-45deg);
+}
+
+.markdownBox :is(h1, h2, h3, h4) > a:hover ~ div > svg {
+  opacity: 1;
+  fill: #2a7ffd;
+
+  animation: fadein 0.25s;
+}
+
+.markdownBox table td {
+  font-size: 16px;
+  padding: 12px;
+  border-bottom: 1px solid var(--secondaryFill);
+  color: var(--secondaryText);
+}
+
+@media screen and (max-width: 900px) {
+  .markdownBox > p > img {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .markdownBox p {
+    font-size: 16px;
+  }
+
+  .markdownBox li {
+    font-size: 16px;
+  }
+
+  .markdownBox .codeStyle > code {
+    font-size: 14px !important;
+  }
+
+  .markdownBox > :is(h1, h2) {
+    margin-top: 60px;
+    margin-bottom: 30px;
+  }
+
+  .markdownBox h2 {
+    font-size: 24px;
+  }
+
+  .markdownBox .tableBox {
+    overflow-x: scroll;
+  }
+
+  .markdownBox table {
+    width: max-content;
+    border-spacing: 0px;
+    margin-bottom: 20px;
+  }
+
+  .markdownBox table th {
+    padding: 12px 0px;
+    padding-right: 18px;
+    font-size: 14px;
+  }
+
+  .markdownBox table td {
+    max-width: 160px;
+    padding: 12px 0px;
+    padding-right: 18px;
+    font-size: 14px;
+  }
+}
+
+html[data-theme="dark"] pre > .dark {
+  display: block;
+}
+
+html[data-theme="light"] pre > .light {
+  display: block;
+}
