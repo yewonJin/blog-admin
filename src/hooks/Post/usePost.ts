@@ -21,7 +21,14 @@ export const initialPostInput: PostInputType = {
 };
 
 export const usePost = (postNumber: number) => {
-  const [input, setInput] = useState({ ...initialPostInput, postNumber });
+  const [input, setInput] = useState({
+    ...initialPostInput,
+    postNumber,
+  });
+
+  const setPostNumber = (postNumber: number) => {
+    setInput((prev) => ({ ...prev, postNumber }));
+  };
 
   const initializeInputWithPost = (post: Post) => {
     setInput({
@@ -63,6 +70,7 @@ export const usePost = (postNumber: number) => {
 
   return {
     input,
+    setPostNumber,
     initializeInput,
     initializeInputWithPost,
     handleContentChange,

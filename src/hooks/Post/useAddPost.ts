@@ -2,6 +2,7 @@ import { useMutation, useQuery, useQueryClient } from "react-query";
 
 import { addPost, getNextPostNumber } from "../../api/post";
 import { usePost } from "./usePost";
+import { useEffect } from "react";
 
 export const useAddPost = () => {
   const { data: nextPostNumber } = useQuery(
@@ -9,8 +10,17 @@ export const useAddPost = () => {
     getNextPostNumber
   );
 
-  const { input, initializeInput, handleContentChange, handleInputChange } =
-    usePost(nextPostNumber);
+  const {
+    input,
+    initializeInput,
+    setPostNumber,
+    handleContentChange,
+    handleInputChange,
+  } = usePost(nextPostNumber);
+
+  useEffect(() => {
+    setPostNumber(nextPostNumber);
+  }, [nextPostNumber]);
 
   const queryClient = useQueryClient();
 
