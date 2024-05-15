@@ -68,7 +68,7 @@ export default function SelectImage({ open, handleClose, postNumber }: Props) {
                 key={item}
                 onClick={() => {
                   navigator.clipboard.writeText(
-                    `![image](https://doromobucket.s3.ap-northeast-2.amazonaws.com/${item})`
+                    `![image](https://doromo.s3.ap-northeast-2.amazonaws.com/${item})`
                   );
                   handleClose();
                 }}
