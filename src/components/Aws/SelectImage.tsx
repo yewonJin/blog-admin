@@ -56,29 +56,27 @@ export default function SelectImage({ open, handleClose, postNumber }: Props) {
           </Stack>
         </Stack>
         <ImageList>
-          {images
-            .filter((item) => item.split("/")[2] !== "")
-            .map((item) => (
-              <ImageListItem
-                sx={{
-                  ":hover": {
-                    cursor: "pointer",
-                  },
-                }}
-                key={item}
-                onClick={() => {
-                  navigator.clipboard.writeText(
-                    `![image](https://doromo.s3.ap-northeast-2.amazonaws.com/${item})`
-                  );
-                  handleClose();
-                }}
-              >
-                <img
-                  alt="이미지"
-                  src={`https://doromo.s3.ap-northeast-2.amazonaws.com/${item}`}
-                ></img>
-              </ImageListItem>
-            ))}
+          {images.map((item) => (
+            <ImageListItem
+              sx={{
+                ":hover": {
+                  cursor: "pointer",
+                },
+              }}
+              key={item}
+              onClick={() => {
+                navigator.clipboard.writeText(
+                  `![image](https://doromo.s3.ap-northeast-2.amazonaws.com/${item})`
+                );
+                handleClose();
+              }}
+            >
+              <img
+                alt="이미지"
+                src={`https://doromo.s3.ap-northeast-2.amazonaws.com/${item}`}
+              ></img>
+            </ImageListItem>
+          ))}
         </ImageList>
       </Stack>
     </Dialog>

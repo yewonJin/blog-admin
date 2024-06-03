@@ -8,6 +8,7 @@ export const useDeletePost = (postNumber: number) => {
   const mutation = useMutation(["deletePost"], () => deletePost(postNumber), {
     onSuccess() {
       queryClient.invalidateQueries("getPosts");
+      queryClient.invalidateQueries("getNextPostNumber");
     },
   });
 

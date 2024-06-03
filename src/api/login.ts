@@ -3,7 +3,7 @@ export const login = async (body: { id: string; password: string }) => {
   myHeaders.append("Content-Type", "application/json");
 
   try {
-    return await fetch(`${process.env.REACT_APP_BASE_URL}/api/auth`, {
+    return await fetch(`${process.env.REACT_APP_BASE_URL}/auth/login`, {
       method: "POST",
       body: JSON.stringify(body),
       credentials: "include",

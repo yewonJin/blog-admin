@@ -1,7 +1,7 @@
 export const getImages = async (postNumber: number): Promise<string[]> => {
   try {
     const res = await fetch(
-      `${process.env.REACT_APP_BASE_URL}/api/aws/post/${postNumber}`,
+      `${process.env.REACT_APP_BASE_URL}/aws/posts/${postNumber}`,
       {
         credentials: "include",
       }
@@ -16,7 +16,7 @@ export const getImages = async (postNumber: number): Promise<string[]> => {
 export const createFolder = async (number: number) => {
   try {
     const res = await fetch(
-      `${process.env.REACT_APP_BASE_URL}/api/aws/post?nextPostNumber=${number}`,
+      `${process.env.REACT_APP_BASE_URL}/aws/post?nextPostNumber=${number}`,
       {
         method: "POST",
         credentials: "include",
@@ -32,10 +32,11 @@ export const createFolder = async (number: number) => {
 export const postImages = async (postNumber: number, formData: FormData) => {
   try {
     const res = await fetch(
-      `${process.env.REACT_APP_BASE_URL}/api/aws/post/${postNumber}`,
+      `${process.env.REACT_APP_BASE_URL}/aws/posts/${postNumber}`,
       {
         method: "POST",
         body: formData,
+        credentials: "include",
       }
     );
 
@@ -51,7 +52,7 @@ export const deleteImage = async (postNumber: number, fileName: string) => {
 
   try {
     const res = await fetch(
-      `${process.env.REACT_APP_BASE_URL}/api/aws/post/${postNumber}?fileName=${fileName}`,
+      `${process.env.REACT_APP_BASE_URL}/aws/posts/${postNumber}?fileName=${fileName}`,
       {
         method: "DELETE",
         credentials: "include",

@@ -2,7 +2,7 @@ import { Post } from "../domain/post";
 
 export const getPosts = async (): Promise<Post[]> => {
   const result = await (
-    await fetch(`${process.env.REACT_APP_BASE_URL}/api/post`)
+    await fetch(`${process.env.REACT_APP_BASE_URL}/posts`)
   ).json();
 
   return result;
@@ -12,7 +12,7 @@ export const getPostByPostNumber = async (
   postNumber: number
 ): Promise<Post> => {
   const result = await (
-    await fetch(`${process.env.REACT_APP_BASE_URL}/api/post?id=${postNumber}`)
+    await fetch(`${process.env.REACT_APP_BASE_URL}/posts/${postNumber}`)
   ).json();
 
   return result;
@@ -21,10 +21,7 @@ export const getPostByPostNumber = async (
 export const getNextPostNumber = async () => {
   try {
     const res = await fetch(
-      `${process.env.REACT_APP_BASE_URL}/api/post?postNumber=true`,
-      {
-        cache: "no-store",
-      }
+      `${process.env.REACT_APP_BASE_URL}/posts/nextPostNumber`
     );
 
     return res.json();
@@ -38,7 +35,7 @@ export const addPost = async (body: Post) => {
   myHeaders.append("Content-Type", "application/json");
 
   try {
-    return await fetch(`${process.env.REACT_APP_BASE_URL}/api/post`, {
+    return await fetch(`${process.env.REACT_APP_BASE_URL}/posts`, {
       method: "POST",
       body: JSON.stringify(body),
       credentials: "include",
@@ -54,7 +51,7 @@ export const updatePost = async (body: Post) => {
   myHeaders.append("Content-Type", "application/json");
 
   try {
-    return await fetch(`${process.env.REACT_APP_BASE_URL}/api/post`, {
+    return await fetch(`${process.env.REACT_APP_BASE_URL}/posts`, {
       method: "PUT",
       body: JSON.stringify(body),
       credentials: "include",
@@ -71,7 +68,7 @@ export const deletePost = async (postNumber: number) => {
 
   try {
     const res = await fetch(
-      `${process.env.REACT_APP_BASE_URL}/api/post?postNumber=${postNumber}`,
+      `${process.env.REACT_APP_BASE_URL}/posts/${postNumber}`,
       {
         method: "DELETE",
         credentials: "include",

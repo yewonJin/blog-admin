@@ -26,7 +26,7 @@ export const useSelectImage = (postNumber: number) => {
     const formData = new FormData();
 
     for (let i = 0; i < e.target.files.length; i++) {
-      formData.append(`file${i}`, e.target.files[i]);
+      formData.append(`files`, e.target.files[i]);
     }
 
     mutation.mutate(formData);
